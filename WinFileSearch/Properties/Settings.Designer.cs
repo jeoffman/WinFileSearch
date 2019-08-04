@@ -8,12 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Windows;
-
-namespace WinFileSearch.Properties
-{
-
-
+namespace WinFileSearch.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
@@ -77,12 +74,58 @@ namespace WinFileSearch.Properties
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("40")]
-        public GridLength TraceMessageGridSplitterPosition {
+        public int TraceMessageGridSplitterPosition {
             get {
-                return ((GridLength)(this["TraceMessageGridSplitterPosition"]));
+                return ((int)(this["TraceMessageGridSplitterPosition"]));
             }
             set {
                 this["TraceMessageGridSplitterPosition"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string[] ComboBoxFileNames {
+            get {
+                return ((string[])(this["ComboBoxFileNames"]));
+            }
+            set {
+                this["ComboBoxFileNames"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string[] ComboBoxSearchText {
+            get {
+                return ((string[])(this["ComboBoxSearchText"]));
+            }
+            set {
+                this["ComboBoxSearchText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int TraceInfoTimeColumnWidth {
+            get {
+                return ((int)(this["TraceInfoTimeColumnWidth"]));
+            }
+            set {
+                this["TraceInfoTimeColumnWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        public int TraceInfoMessageColumnWidth {
+            get {
+                return ((int)(this["TraceInfoMessageColumnWidth"]));
+            }
+            set {
+                this["TraceInfoMessageColumnWidth"] = value;
             }
         }
     }

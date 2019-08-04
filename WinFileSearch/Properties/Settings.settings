@@ -17,5 +17,22 @@
     <Setting Name="TraceMessageGridSplitterPosition" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">40</Value>
     </Setting>
+    <Setting Name="ComboBoxFileNames" Type="System.String[]" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+
+    <Setting Name="ComboBoxSearchText" Type="System.String[]" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+
+    
+    <Setting Name="TraceInfoTimeColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="TraceInfoMessageColumnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">400</Value>
+    </Setting>
+
+
   </Settings>
 </SettingsFile>

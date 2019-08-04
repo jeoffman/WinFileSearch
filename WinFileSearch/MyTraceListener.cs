@@ -1,64 +1,56 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Text;
 
 namespace WinFileSearch
 {
-    public class MyTraceListener : TraceListener, INotifyPropertyChanged
+    public class MyTraceListener : TraceListener
     {
-        private readonly StringBuilder _builder;
-
         public EventHandler<TraceEventArgs> EventHandler { get; set; }
 
         public MyTraceListener()
         {
-            _builder = new StringBuilder();
         }
-
-        public string Trace => _builder.ToString();
 
         public override void Write(string message)
         {
-            _builder.Append(message);
-            OnPropertyChanged(new PropertyChangedEventArgs("Trace"));
+            if (EventHandler != null)
+                EventHandler(this, new TraceEventArgs { TraceEventType = null, Message = message });
         }
 
         public override void WriteLine(string message)
         {
-            _builder.AppendLine(message);
-            OnPropertyChanged(new PropertyChangedEventArgs("Trace"));
+            if (EventHandler != null)
+                EventHandler(this, new TraceEventArgs { TraceEventType = null, Message = message });
         }
 
         public override void TraceEvent(TraceEventCache eventCache, string source, TraceEventType eventType, int id, string message)
         {
-            EventHandler(this, new TraceEventArgs { TraceEventType = eventType, Message = message });
-
-            //TraceEvent(eventCache, source, eventType, id, message);
-            _builder.Append($"<Italic>{message}</Italic>");
+            if(EventHandler != null)
+                EventHandler(this, new TraceEventArgs { TraceEventType = eventType, Message = message });
         }
 
         public override void TraceEvent(TraceEventCache eventCache, string source, TraceEventType eventType, int id, string format, params object[] args)
         {
-            _builder.Append(string.Format(format, args));
+            if (EventHandler != null)
+                EventHandler(this, new TraceEventArgs { TraceEventType = eventType, Message = String.Format(format, args) });
         }
 
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+        public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
         {
-            PropertyChanged?.Invoke(this, e);
+            if(EventHandler != null)
+                EventHandler(this, new TraceEventArgs { TraceEventType = eventType, Message = data.ToString() });
         }
 
+        public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, params object[] data)
+        {
+            if(EventHandler != null)
+                EventHandler(this, new TraceEventArgs { TraceEventType = eventType, Message = data.ToString() });
+        }
     }
 
     public class TraceEventArgs : EventArgs
     {
-        public TraceEventType TraceEventType { get; set; }
+        public TraceEventType? TraceEventType { get; set; }
         public string Message { get; set; }
     }
 }
